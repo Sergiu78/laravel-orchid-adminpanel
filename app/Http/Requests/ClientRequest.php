@@ -24,12 +24,13 @@ class ClientRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone' => ['phone:RU', 'required'],
-            'name' => ['required'],
-            'last_name' => ['required'],
-            'email' => ['email', 'required'],
-            'birthday' => ['date_format:Y-m-d', 'required'],
-            'service_id' => ['exists:services,id']
+            'client.phone' => ['sometimes', 'phone:RU', 'required'],
+            'client.name' => ['required'],
+            'client.last_name' => ['required'],
+            'client.email' => ['email', 'required'],
+            'client.birthday' => ['date_format:Y-m-d', 'required'],
+            'client.service_id' => ['exists:services,id'],
+            'client.assessment' => ['required']
         ];
     }
 }
